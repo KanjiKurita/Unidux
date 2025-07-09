@@ -30,7 +30,7 @@ If you need older versions, import unitypackage from [latest releases](https://g
 1) Create your Unidux singleton and place it to unity scene.
 
 ```csharp
-using UniRx;
+using R3;
 using Unidux;
 
 public sealed class Unidux : SingletonMonoBehaviour<Unidux>, IStoreAccessor

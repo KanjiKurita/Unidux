@@ -1,5 +1,5 @@
 ﻿using Unidux.SceneTransition;
-using UniRx;
+using R3;
 using UnityEngine;
 
 namespace Unidux.Example.SceneTransition

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unidux.Util;
-using UniRx;
+using R3;
 using UnityEditor;
 using UnityEngine;
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unidux.Rx;
-using UniRx;
+using R3;
 
 namespace Unidux
 {

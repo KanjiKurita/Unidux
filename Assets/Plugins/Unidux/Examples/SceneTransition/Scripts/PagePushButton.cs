@@ -1,6 +1,6 @@
 ﻿using Unidux.SceneTransition;
 using UnityEngine;
-using UniRx;
+using R3;
 using UnityEngine.UI;
 
 namespace Unidux.Example.SceneTransition

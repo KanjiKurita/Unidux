@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Unidux.Util;
-using UniRx;
+using R3;
 using UnityEngine;
 
 namespace Unidux
