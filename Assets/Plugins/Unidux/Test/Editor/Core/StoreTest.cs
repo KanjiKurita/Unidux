@@ -175,8 +175,8 @@ namespace Unidux
     }
 
 
-    public interface IObservablesGet
+    public interface ObservablesGet
     {
-        IObservable<Unit> Sample(Unit entity);
+        Observable<Unit> Sample(Unit entity);
     }
 }
