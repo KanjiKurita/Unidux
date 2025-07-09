@@ -1,15 +1,15 @@
 ﻿using System;
-using UniRx;
+using R3;
 
 namespace Unidux.Example.Middlewares
 {
-    public static class IObservableExtension
+    public static class ObservableExtension
     {
-        public static IObservable<Unit> AsThunkObservable(this object observer)
+        public static Observable<Unit> AsThunkObservable(this object observer)
         {
-            if (observer is IObservable<Unit>)
+            if (observer is Observable<Unit>)
             {
-                return observer as IObservable<Unit>;
+                return observer as Observable<Unit>;
             }
 
             return null;

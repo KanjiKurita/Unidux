@@ -10,12 +10,33 @@ It's inspired by Redux.
 
 ## UPM 
 
-Add following two lines to `Pacakges/manifest.json`.
+1. Please Install R3 from NuGet.(Add following lines to `Pacakges/manifest.json`.)
 
 ```
 {
- "com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts",
- "me.mattak.unidux": "https://github.com/mattak/Unidux.git?path=Assets/Plugins/Unidux/Scripts",
+    "com.github-glitchenzo.nugetforunity": "https://github.com/GlitchEnzo/NuGetForUnity.git?path=/src/NuGetForUnity",
+    "com.cysharp.r3": "1.3.0",
+    "org.nuget.observablecollections.r3": "3.3.4",
+    "org.nuget.r3": "1.3.0",
+},
+"scopedRegistries": [
+    {
+        "name": "OpenUPM",
+        "url": "https://package.openupm.com",
+        "scopes": [
+        "org.nuget",
+        "com.cysharp"
+        ]
+    }
+]
+```
+
+
+2. Add following lines to `Pacakges/manifest.json`.
+
+```
+{
+ "me.mattak.unidux": "https://github.com/KanjiKurita/Unidux.git?path=Assets/Plugins/Unidux/Scripts",
  // ...
 }
 ```
@@ -30,7 +51,7 @@ If you need older versions, import unitypackage from [latest releases](https://g
 1) Create your Unidux singleton and place it to unity scene.
 
 ```csharp
-using UniRx;
+using R3;
 using Unidux;
 
 public sealed class Unidux : SingletonMonoBehaviour<Unidux>, IStoreAccessor
@@ -207,7 +228,7 @@ That's it!
 
 # Dependencies
 
-- [UniRx](https://github.com/neuecc/UniRx)
+- [R3](https://github.com/Cysharp/R3)
 - [MiniJSON](https://gist.github.com/darktable/1411710) (for Unidux.Experimental.Editor.StateJsonEditor)
 
 # API
@@ -323,6 +344,7 @@ class State : StateBase
 
 # Thanks
 
+- [@Cysharp](https://github.com/Cysharp) for R3.
 - [@austinmao](https://github.com/austinmao) for suggestion of Ducks and UniRx.
 - [@pine](https://github.com/pine) for description improvement.
 - [@jesstelford](https://github.com/jesstelford) for fix document.

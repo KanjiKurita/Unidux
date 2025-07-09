@@ -1,3 +1,8 @@
+# 2025-07010
+Breaking Changes
+- migrate to R3 from UniRx
+- delete UniRx dependencies
+
 # 2017-10-30 v0.3.3
 
 Features

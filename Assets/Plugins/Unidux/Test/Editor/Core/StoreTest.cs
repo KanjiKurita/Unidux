@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using NUnit.Framework;
 using Unidux.Rx;
-using UniRx;
+using R3;
 
 namespace Unidux
 {
@@ -175,8 +175,8 @@ namespace Unidux
     }
 
 
-    public interface IObservablesGet
+    public interface ObservablesGet
     {
-        IObservable<Unit> Sample(Unit entity);
+        Observable<Unit> Sample(Unit entity);
     }
 }

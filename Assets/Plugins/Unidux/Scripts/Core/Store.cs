@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Unidux.Util;
-using UniRx;
+using R3;
 using UnityEngine;
 
 namespace Unidux
@@ -35,7 +35,7 @@ namespace Unidux
             set { this.State = (TState) value; }
         }
 
-        public IObservable<object> ObjectSubject
+        public Observable<object> ObjectSubject
         {
             get { return this.Subject.Select(it => (object) it); }
         }

@@ -39,6 +39,8 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0",
-    "com.neuecc.unirx": "https://github.com/neuecc/UniRx.git?path=Assets/Plugins/UniRx/Scripts"
+    "org.nuget.observablecollections.r3": "3.3.4",
+    "org.nuget.r3": "1.3.0",
+    "com.cysharp.r3": "1.3.0"
   }
 }
