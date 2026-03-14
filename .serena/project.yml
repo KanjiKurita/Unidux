@@ -1,0 +1,36 @@
+project_name: Unidux
+
+# .sln が存在しないため csharp LSP (OmniSharp) は起動不可。LSP なし。
+languages: []
+
+encoding: utf-8
+
+ignore_all_files_in_gitignore: true
+
+ignored_paths:
+- "Assets/Plugins/Unidux/Examples/**"
+- "Library/**"
+- "Logs/**"
+- "Temp/**"
+- "obj/**"
+- "**/*.meta"
+
+read_only: false
+
+initial_prompt: |
+  このプロジェクトは Unity3D 向けの Redux ライクなアーキテクチャライブラリ「Unidux」です。
+  mattak/Unidux のフォーク（feature/kkurita/unidux-to-r3-from-unirx ブランチ）です。
+
+  コード構成:
+  - Assets/Plugins/Unidux/Scripts/: コアライブラリ
+    - Core/: Store, Reducer, Action の基底クラス群
+    - SceneTransition/: シーン遷移サポート
+    - Util/: ユーティリティ
+  - Assets/Plugins/Unidux/Examples/: サンプルシーン群
+  - Assets/Plugins/Unidux/Test/Editor/: Editor テスト（NUnit）
+
+  重要な注意事項:
+  - UniRx から R3 への移行済み。UniRx 名前空間の新規追加禁止
+  - テストは NUnit (EditMode) を使用
+  - パブリックリポジトリのためセンシティブな情報は含めないこと
+  - AGENTS.md を参照してから作業すること
