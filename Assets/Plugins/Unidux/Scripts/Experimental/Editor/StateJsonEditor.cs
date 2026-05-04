@@ -39,8 +39,8 @@ namespace Unidux.Experimental.Editor
 
             if (Selection.activeObject != wrapper)
             {
-                string fn = AssetDatabase.GetAssetPath(Selection.activeInstanceID);
-                if (FILE_EXTENSIONS.Any(extension => fn.ToLower().EndsWith(extension)))
+                string fn = AssetDatabase.GetAssetPath(Selection.activeObject);
+                if (!string.IsNullOrEmpty(fn) && FILE_EXTENSIONS.Any(extension => fn.EndsWith(extension, System.StringComparison.OrdinalIgnoreCase)))
                 {
                     if (wrapper == null)
                     {

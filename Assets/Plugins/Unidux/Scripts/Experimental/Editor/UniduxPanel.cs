@@ -17,7 +17,8 @@ namespace Unidux.Experimental.Editor
         private GameObject _storeObject = null;
         private IStoreAccessor _store = null;
         private int _toolBarPosition = 0;
-        private const string StoreObjectKey = "UniduxPanel.StoreObject";
+        private const string StoreObjectKey = "UniduxPanel.StoreObject.GlobalObjectId";
+        private const string LegacyStoreObjectKey = "UniduxPanel.StoreObject";
         private UniduxPanelSettingTab _settingTab = new UniduxPanelSettingTab();
         private UniduxPanelStateTab _stateTab = new UniduxPanelStateTab();
 
@@ -70,26 +71,56 @@ namespace Unidux.Experimental.Editor
         private void ResetObject(string key)
         {
             EditorPrefs.DeleteKey(key);
+            EditorPrefs.DeleteKey(LegacyStoreObjectKey);
         }
 
-        private int SaveObject(GameObject obj, string key)
+        private void SaveObject(GameObject obj, string key)
         {
-            if (obj != null)
+            if (obj == null)
             {
-                int id = obj.GetInstanceID();
-                EditorPrefs.SetInt(key, id);
-                return id;
+                this.ResetObject(key);
+                return;
             }
-            return -1;
+
+#if UNITY_2020_1_OR_NEWER
+            EditorPrefs.SetString(key, GlobalObjectId.GetGlobalObjectIdSlow(obj).ToString());
+            EditorPrefs.DeleteKey(LegacyStoreObjectKey);
+#else
+            EditorPrefs.SetInt(LegacyStoreObjectKey, obj.GetInstanceID());
+#endif
         }
 
         private GameObject LoadObject(string key)
         {
-            int id = EditorPrefs.GetInt(key, -1);
+#if UNITY_2020_1_OR_NEWER
+            string globalObjectIdValue = EditorPrefs.GetString(key, string.Empty);
+            if (!string.IsNullOrEmpty(globalObjectIdValue))
+            {
+                GlobalObjectId globalObjectId;
+                if (GlobalObjectId.TryParse(globalObjectIdValue, out globalObjectId))
+                {
+                    return GlobalObjectId.GlobalObjectIdentifierToObjectSlow(globalObjectId) as GameObject;
+                }
+            }
+#endif
+
+#if !UNITY_6000_0_OR_NEWER
+            int id = EditorPrefs.GetInt(LegacyStoreObjectKey, -1);
             if (id != -1)
             {
-                return EditorUtility.InstanceIDToObject(id) as GameObject;
+                var obj = EditorUtility.InstanceIDToObject(id) as GameObject;
+
+#if UNITY_2020_1_OR_NEWER
+                if (obj != null)
+                {
+                    this.SaveObject(obj, key);
+                }
+#endif
+
+                return obj;
             }
+#endif
+
             return null;
         }
     }
